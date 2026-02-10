@@ -280,8 +280,4 @@ panel.innerHTML=`<div class="notif-panel-header"><h6 class="mb-0">Notificações
 <div class="notif-panel-body">${notifs.length?notifs.map(n=>`<div class="notif-item ${n.read?'read':''}" onclick="Notif.markRead('${n.id}');updateNav()"><div class="notif-title">${n.title}</div><div class="notif-msg">${n.message}</div><small class="text-muted">${Utils.formatDateTime(n.createdAt)}</small></div>`).join(''):'<div class="p-3 text-center text-muted">Nenhuma notificação.</div>'}</div>`;
 panel.classList.toggle('show')}
 
-// ============ SIDEBAR TOGGLE ============
-function toggleSidebar(){document.getElementById('app-sidebar').classList.toggle('collapsed');document.getElementById('main-area').classList.toggle('expanded')}
-
-// ============ INIT ============
-document.addEventListener('DOMContentLoaded',async()=>{await seedData();initRouter()});
+// (toggleSidebar, closeSidebar, init are in app.js)

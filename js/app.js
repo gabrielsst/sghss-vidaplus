@@ -280,8 +280,8 @@ panel.innerHTML=`<div class="notif-panel-header"><h6 class="mb-0">Notificações
 panel.classList.toggle('show')}
 
 // ============ SIDEBAR TOGGLE ============
-function toggleSidebar(){const sb=document.getElementById('app-sidebar');const ma=document.getElementById('main-area');if(window.innerWidth<992){sb.classList.toggle('mobile-open');const ov=document.querySelector('.sidebar-overlay');ov.style.display=sb.classList.contains('mobile-open')?'block':'none'}else{sb.classList.toggle('hidden');ma.classList.toggle('full')}}
-function closeSidebar(){const sb=document.getElementById('app-sidebar');if(window.innerWidth<992){sb.classList.remove('mobile-open');document.querySelector('.sidebar-overlay').style.display='none'}else{sb.classList.add('hidden');document.getElementById('main-area').classList.add('full')}}
+function toggleSidebar(){const sb=document.getElementById('app-sidebar');const ma=document.getElementById('main-area');if(window.innerWidth<992){sb.classList.toggle('mobile-open');const ov=document.querySelector('.sidebar-overlay');ov.style.display=sb.classList.contains('mobile-open')?'block':'none'}else{sb.classList.toggle('collapsed');ma.classList.toggle('expanded')}}
+function closeSidebar(){const sb=document.getElementById('app-sidebar');if(window.innerWidth<992){sb.classList.remove('mobile-open');document.querySelector('.sidebar-overlay').style.display='none'}else{sb.classList.add('collapsed');document.getElementById('main-area').classList.add('expanded')}}
 
 // ============ INIT ============
 document.addEventListener('DOMContentLoaded',async()=>{await seedData();initRouter()});

@@ -276,6 +276,7 @@ panel.classList.toggle('show')}
 
 // ============ SIDEBAR TOGGLE ============
 function toggleSidebar(){document.getElementById('app-sidebar').classList.toggle('collapsed');document.getElementById('main-area').classList.toggle('expanded')}
+function closeSidebar(){const sb=document.getElementById('app-sidebar');if(window.innerWidth<992){sb.classList.remove('mobile-open');document.querySelector('.sidebar-overlay').style.display='none'}else{sb.classList.add('collapsed');document.getElementById('main-area').classList.add('expanded')}}
 
 // ============ INIT ============
 document.addEventListener('DOMContentLoaded',async()=>{await seedData();initRouter()});

@@ -179,7 +179,23 @@ body {
   color: #fff; font-size: 18px;
   flex-shrink: 0;
 }
-.sidebar-brand span { color: #fff; font-weight: 700; font-size: 16px; white-space: nowrap; }
+.sidebar-brand span { color: #fff; font-weight: 700; font-size: 16px; white-space: nowrap; flex: 1; }
+
+/* Sidebar Close Button */
+.sidebar-close-btn {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: var(--sidebar-text);
+  width: 30px; height: 30px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+  font-size: 14px;
+}
+.sidebar-close-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+#app-sidebar.collapsed .sidebar-close-btn { display: none; }
 
 .sidebar-nav {
   flex: 1;

@@ -37,10 +37,6 @@ function updateNav(){
 }
 function updateSidebar(){
   const u=Auth.user();if(!u)return;
-  const sb=document.getElementById('app-sidebar');
-  // Remove collapsed state so items are visible
-  sb.classList.remove('collapsed');
-  document.getElementById('main-area').classList.remove('expanded');
   document.getElementById('sidebar-menu').innerHTML=getMenu(u.role).map(i=>{
     if(i.div)return`<li class="sidebar-divider"><span>${i.label}</span></li>`;
     return`<li><a href="#${i.path}" class="sidebar-link ${currentRoute===i.path?'active':''}" onclick="onSidebarNav()"><i class="${i.icon}"></i><span>${i.label}</span></a></li>`

@@ -25,7 +25,7 @@ function resolve(){
 }
 
 // ============ LAYOUT ============
-function showApp(){document.getElementById('app-login').classList.add('d-none');document.getElementById('app-main').classList.remove('d-none');updateNav();updateSidebar()}
+function showApp(){document.getElementById('app-login').classList.add('d-none');document.getElementById('app-main').classList.remove('d-none');document.getElementById('app-sidebar').classList.remove('collapsed');document.getElementById('main-area').classList.remove('expanded');updateNav();updateSidebar()}
 function showLogin(){document.getElementById('app-login').classList.remove('d-none');document.getElementById('app-main').classList.add('d-none')}
 function updateNav(){
   const u=Auth.user();if(!u)return;

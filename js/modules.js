@@ -273,11 +273,4 @@ document.getElementById('main-content').innerHTML=`
 ${exs.map(e=>`<tr><td><strong>${e.name}</strong></td><td>${Utils.formatDate(e.date)}</td><td>${e.type}</td><td>${statusBadge(e.status)}</td><td>${e.results||'Aguardando'}</td></tr>`).join('')||'<tr><td colspan="5" class="text-center text-muted">Nenhum exame.</td></tr>'}
 </tbody></table></div></div></div>`;updateSidebar()}
 
-// ============ NOTIFICATIONS PANEL ============
-function showNotifications(){const u=Auth.user();const notifs=Notif.byUser(u.profileId||u.id).slice(0,20);
-const panel=document.getElementById('notif-panel');
-panel.innerHTML=`<div class="notif-panel-header"><h6 class="mb-0">Notificações</h6><button class="btn btn-sm btn-link" onclick="Notif.markAllRead('${u.profileId||u.id}');updateNav();showNotifications()">Marcar todas como lidas</button></div>
-<div class="notif-panel-body">${notifs.length?notifs.map(n=>`<div class="notif-item ${n.read?'read':''}" onclick="Notif.markRead('${n.id}');updateNav()"><div class="notif-title">${n.title}</div><div class="notif-msg">${n.message}</div><small class="text-muted">${Utils.formatDateTime(n.createdAt)}</small></div>`).join(''):'<div class="p-3 text-center text-muted">Nenhuma notificação.</div>'}</div>`;
-panel.classList.toggle('show')}
-
-// (toggleSidebar, closeSidebar, init are in app.js)
+// (showNotifications, toggleSidebar, closeSidebar, init are in app.js)

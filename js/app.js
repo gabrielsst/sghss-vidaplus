@@ -42,7 +42,7 @@ function updateSidebar(){
     return`<li><a href="#${i.path}" class="sidebar-link ${currentRoute===i.path?'active':''}" onclick="onSidebarNav()"><i class="${i.icon}"></i><span>${i.label}</span></a></li>`
   }).join('');
 }
-function onSidebarNav(){if(window.innerWidth<992){document.getElementById('app-sidebar').classList.remove('mobile-open');const ov=document.querySelector('.sidebar-overlay');if(ov)ov.style.display='none'}}
+function onSidebarNav(){if(window.innerWidth<992){document.getElementById('app-sidebar').classList.remove('mobile-open');const ov=document.querySelector('.sidebar-overlay');if(ov)ov.classList.remove('active')}}
 function getMenu(role){
   const c=[{div:1,label:'Principal'},{path:'/dashboard',icon:'bi bi-grid-1x2-fill',label:'Dashboard'}];
   const m={
@@ -276,8 +276,29 @@ panel.innerHTML=`<div class="notif-panel-header"><h6 class="mb-0">Notificações
 panel.classList.toggle('show')}
 
 // ============ SIDEBAR TOGGLE ============
-function toggleSidebar(){const sb=document.getElementById('app-sidebar');const ma=document.getElementById('main-area');if(window.innerWidth<992){sb.classList.toggle('mobile-open');const ov=document.querySelector('.sidebar-overlay');ov.style.display=sb.classList.contains('mobile-open')?'block':'none'}else{sb.classList.toggle('collapsed');ma.classList.toggle('expanded')}}
-function closeSidebar(){const sb=document.getElementById('app-sidebar');if(window.innerWidth<992){sb.classList.remove('mobile-open');document.querySelector('.sidebar-overlay').style.display='none'}else{sb.classList.add('collapsed');document.getElementById('main-area').classList.add('expanded')}}
+function toggleSidebar(){
+  const sb=document.getElementById('app-sidebar');
+  const ma=document.getElementById('main-area');
+  const ov=document.querySelector('.sidebar-overlay');
+  if(window.innerWidth<992){
+    sb.classList.toggle('mobile-open');
+    if(ov)ov.classList.toggle('active',sb.classList.contains('mobile-open'));
+  }else{
+    sb.classList.toggle('collapsed');
+    ma.classList.toggle('expanded');
+  }
+}
+function closeSidebar(){
+  const sb=document.getElementById('app-sidebar');
+  const ov=document.querySelector('.sidebar-overlay');
+  if(window.innerWidth<992){
+    sb.classList.remove('mobile-open');
+    if(ov)ov.classList.remove('active');
+  }else{
+    sb.classList.add('collapsed');
+    document.getElementById('main-area').classList.add('expanded');
+  }
+}
 
 // ============ INIT ============
 document.addEventListener('DOMContentLoaded',async()=>{await seedData();initRouter()});
